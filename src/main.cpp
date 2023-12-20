@@ -1,7 +1,6 @@
 #include <Arduino.h>
+#include "wifiman.h"
 #include "config.h"
-
-// #define INTEGRATION
 
 #ifdef INTEGRATION
 #include "integration.h"
@@ -13,6 +12,8 @@ void setup()
 {
   Serial.begin(SERIAL_BAUD_RATE);
 
+  wifiman_setup();
+
 #ifdef INTEGRATION
   integration_setup();
 #else
@@ -22,6 +23,8 @@ void setup()
 
 void loop()
 {
+  wifiman_loop();
+
 #ifdef INTEGRATION
   integration_loop();
 #else

@@ -2,11 +2,11 @@
 #include <Arduino.h>
 #include "config.h"
 
-void interface_setup()
+void interfaceSetup()
 {
   Serial.println("--- User Interface Module ---");
 }
 
-void interface_loop()
+void interfaceLoop()
 {
 }

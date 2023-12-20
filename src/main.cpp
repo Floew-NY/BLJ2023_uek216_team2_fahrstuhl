@@ -12,22 +12,22 @@ void setup()
 {
   Serial.begin(SERIAL_BAUD_RATE);
 
-  wifiman_setup();
+  wifimanSetup();
 
 #ifdef INTEGRATION
-  integration_setup();
+  integrationSetup();
 #else
-  interface_setup();
+  interfaceSetup();
 #endif
 }
 
 void loop()
 {
-  wifiman_loop();
+  wifimanLoop();
 
 #ifdef INTEGRATION
-  integration_loop();
+  integrationLoop();
 #else
-  interface_loop();
+  interfaceLoop();
 #endif
 }

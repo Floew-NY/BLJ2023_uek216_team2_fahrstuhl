@@ -2,8 +2,8 @@
 
 #include <Arduino.h>
 
-void interface_setup();
+void interfaceSetup();
 
-void interface_loop();
+void interfaceLoop();
 
 #pragma endregion

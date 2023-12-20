@@ -6,8 +6,8 @@
 
 extern WiFiManager wifiManager;
 
-void wifiman_setup();
+void wifimanSetup();
 
-void wifiman_loop();
+void wifimanLoop();
 
 #pragma endregion

@@ -2,8 +2,8 @@
 
 #include <Arduino.h>
 
-void integration_setup();
+void integrationSetup();
 
-void integration_loop();
+void integrationLoop();
 
 #pragma endregion

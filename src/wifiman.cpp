@@ -7,7 +7,7 @@ WiFiManager wifiManager;
 
 long prevButtonState = HIGH;
 
-void wifiman_setup()
+void wifimanSetup()
 {
   wifiManager.setConfigPortalTimeout(60 * 5); // 5 minutes
   wifiManager.setConfigPortalBlocking(false);
@@ -17,7 +17,7 @@ void wifiman_setup()
   Serial.println("Connected to WiFi.");
 }
 
-void wifiman_loop()
+void wifimanLoop()
 {
   int buttonState = digitalRead(CONFIG_BUTTON_PIN);
 

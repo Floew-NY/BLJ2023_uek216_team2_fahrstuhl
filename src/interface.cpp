@@ -1,3 +1,4 @@
+#include "interface.h"
 #include <Arduino.h>
 #include "config.h"
 

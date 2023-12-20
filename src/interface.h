@@ -1,5 +1,4 @@
-#ifndef INTERFACE_H
-#define INTERFACE_H
+#pragma once
 
 #include <Arduino.h>
 
@@ -7,4 +6,4 @@ void interface_setup();
 
 void interface_loop();
 
-#endif
+#pragma endregion

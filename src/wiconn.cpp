@@ -13,7 +13,7 @@ WiFiManagerParameter paramMqttUser("mqtt_user", "MQTT user", DEFAULT_MQTT_USER, 
 WiFiManagerParameter paramMqttPassword("mqtt_password", "MQTT password", DEFAULT_MQTT_PASSWORD, 40);
 WiFiManagerParameter paramMqttTopic("mqtt_topic", "MQTT topic", DEFAULT_MQTT_TOPIC, 40);
 
-int prevButtonState = HIGH;
+int prevConfigButtonState = HIGH;
 
 void setupWifi()
 {
@@ -28,7 +28,9 @@ void setupWifi()
   wifiManager.addParameter(&paramMqttUser);
   wifiManager.addParameter(&paramMqttPassword);
   wifiManager.addParameter(&paramMqttTopic);
+
   wifiManager.setSaveParamsCallback(onSaveParams);
+  wifiManager.setConfigResetCallback(onConfigReset);
 
   wifiManager.setConfigPortalTimeout(60 * 5); // 5 minutes
   wifiManager.setConfigPortalBlocking(false);
@@ -43,13 +45,13 @@ void loopWifi()
 
 void checkConfigButton()
 {
-  int buttonState = digitalRead(CONFIG_BUTTON_PIN);
+  int configButtonState = digitalRead(CONFIG_BUTTON_PIN);
 
-  if (buttonState == LOW && prevButtonState == HIGH)
+  if (configButtonState == LOW && prevConfigButtonState == HIGH)
   {
     Serial.println("Entering config portal.");
     wifiManager.startConfigPortal();
-    prevButtonState = LOW;
+    prevConfigButtonState = LOW;
   }
 }
 
@@ -59,6 +61,14 @@ void onSaveParams()
   savePrefs();
 
   connectMqtt();
+}
+
+void onConfigReset()
+{
+  Serial.println("Resetting preferences.");
+  resetPrefs();
+
+  disconnectMqtt();
 }
 
 void onWifiEvent(WiFiEvent_t event)

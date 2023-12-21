@@ -13,7 +13,7 @@ extern WiFiManagerParameter paramMqttUser;
 extern WiFiManagerParameter paramMqttPassword;
 extern WiFiManagerParameter paramMqttTopic;
 
-extern int prevButtonState;
+extern int prevConfigButtonState;
 
 void setupWifi();
 
@@ -22,5 +22,7 @@ void loopWifi();
 void checkConfigButton();
 
 void onSaveParams();
+
+void onConfigReset();
 
 void onWifiEvent(WiFiEvent_t event);

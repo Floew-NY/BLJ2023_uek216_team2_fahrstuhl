@@ -13,7 +13,7 @@ WiFiManagerParameter paramMqttUser("mqtt_user", "MQTT user", DEFAULT_MQTT_USER, 
 WiFiManagerParameter paramMqttPassword("mqtt_password", "MQTT password", DEFAULT_MQTT_PASSWORD, 40);
 WiFiManagerParameter paramMqttTopic("mqtt_topic", "MQTT topic", DEFAULT_MQTT_TOPIC, 40);
 
-int prevButtonState = HIGH;
+int prevConfigButtonState = HIGH;
 
 void setupWifi()
 {
@@ -45,13 +45,13 @@ void loopWifi()
 
 void checkConfigButton()
 {
-  int buttonState = digitalRead(CONFIG_BUTTON_PIN);
+  int configButtonState = digitalRead(CONFIG_BUTTON_PIN);
 
-  if (buttonState == LOW && prevButtonState == HIGH)
+  if (configButtonState == LOW && prevConfigButtonState == HIGH)
   {
     Serial.println("Entering config portal.");
     wifiManager.startConfigPortal();
-    prevButtonState = LOW;
+    prevConfigButtonState = LOW;
   }
 }
 

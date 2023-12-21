@@ -10,6 +10,12 @@ char config_mqtt_user[40] = DEFAULT_MQTT_USER;
 char config_mqtt_password[40] = DEFAULT_MQTT_PASSWORD;
 char config_mqtt_topic[40] = DEFAULT_MQTT_TOPIC;
 
+void setupPrefs()
+{
+  preferences.begin("config", false);
+  loadPrefs();
+}
+
 void loadPrefs()
 {
   strcpy(config_mqtt_server, preferences.getString("mqtt_server", config_mqtt_server).c_str());

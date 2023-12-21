@@ -4,6 +4,12 @@
 
 AsyncMqttClient mqttClient;
 
+void setupMqtt()
+{
+  mqttClient.onConnect(onMqttConnect);
+  mqttClient.onDisconnect(onMqttDisconnect);
+}
+
 void connectMqtt()
 {
   mqttClient.disconnect();

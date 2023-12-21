@@ -15,6 +15,32 @@ WiFiManagerParameter paramMqttTopic("mqtt_topic", "MQTT topic", DEFAULT_MQTT_TOP
 
 int prevButtonState = HIGH;
 
+void setupWifi()
+{
+  WiFi.mode(WIFI_STA);
+  WiFi.onEvent(onWifiEvent);
+
+  // WiFiManager
+  wifiManager.setDebugOutput(false);
+
+  wifiManager.addParameter(&paramMqttServer);
+  wifiManager.addParameter(&paramMqttPort);
+  wifiManager.addParameter(&paramMqttUser);
+  wifiManager.addParameter(&paramMqttPassword);
+  wifiManager.addParameter(&paramMqttTopic);
+  wifiManager.setSaveParamsCallback(onSaveParams);
+
+  wifiManager.setConfigPortalTimeout(60 * 5); // 5 minutes
+  wifiManager.setConfigPortalBlocking(false);
+
+  wifiManager.autoConnect();
+}
+
+void loopWifi()
+{
+  wifiManager.process();
+}
+
 void checkConfigButton()
 {
   int buttonState = digitalRead(CONFIG_BUTTON_PIN);

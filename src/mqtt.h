@@ -4,6 +4,8 @@
 
 extern AsyncMqttClient mqttClient;
 
+void setupMqtt();
+
 void connectMqtt();
 
 void onMqttConnect(bool sessionPresent);

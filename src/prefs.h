@@ -18,6 +18,8 @@ extern char config_mqtt_user[40];
 extern char config_mqtt_password[40];
 extern char config_mqtt_topic[40];
 
+void setupPrefs();
+
 void loadPrefs();
 
 void savePrefs();

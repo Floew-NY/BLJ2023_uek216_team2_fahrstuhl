@@ -11,51 +11,15 @@
 #include "interface.h"
 #endif
 
-/*
- * Preferences
- */
-
-/*
- * MQTT
- */
-
-/*
- * WiFi
- */
-
-/*
- * Main
- */
 void setup()
 {
   Serial.begin(SERIAL_BAUD_RATE);
 
-  // Preferences
-  preferences.begin("config", false);
-  loadPrefs();
+  setupPrefs();
 
-  // MQTT
-  mqttClient.onConnect(onMqttConnect);
-  mqttClient.onDisconnect(onMqttDisconnect);
+  setupMqtt();
 
-  // WiFi
-  WiFi.mode(WIFI_STA);
-  WiFi.onEvent(onWifiEvent);
-
-  // WiFiManager
-  wifiManager.setDebugOutput(false);
-
-  wifiManager.addParameter(&paramMqttServer);
-  wifiManager.addParameter(&paramMqttPort);
-  wifiManager.addParameter(&paramMqttUser);
-  wifiManager.addParameter(&paramMqttPassword);
-  wifiManager.addParameter(&paramMqttTopic);
-  wifiManager.setSaveParamsCallback(onSaveParams);
-
-  wifiManager.setConfigPortalTimeout(60 * 5); // 5 minutes
-  wifiManager.setConfigPortalBlocking(false);
-
-  wifiManager.autoConnect();
+  setupWifi();
 
   // Main setup
 #ifdef INTEGRATION
@@ -69,7 +33,7 @@ void loop()
 {
   checkConfigButton();
 
-  wifiManager.process();
+  loopWifi();
 
 #ifdef INTEGRATION
   integrationLoop();
@@ -77,15 +41,3 @@ void loop()
   interfaceLoop();
 #endif
 }
-
-/*
- * Preferences
- */
-
-/*
- * MQTT
- */
-
-/*
- * WiFi
- */

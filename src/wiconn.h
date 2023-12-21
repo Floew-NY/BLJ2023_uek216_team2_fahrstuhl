@@ -15,6 +15,10 @@ extern WiFiManagerParameter paramMqttTopic;
 
 extern int prevButtonState;
 
+void setupWifi();
+
+void loopWifi();
+
 void checkConfigButton();
 
 void onSaveParams();

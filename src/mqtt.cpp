@@ -77,7 +77,6 @@ void onMqttConnect(bool sessionPresent)
   {
     MQTTSubscription subscription = mqttSubscriptions[i];
     mqttClient.subscribe(getFullTopic(subscription.topic).c_str(), subscription.qos);
-    // mqttClient.subscribe("#", subscription.qos);
   }
 }
 

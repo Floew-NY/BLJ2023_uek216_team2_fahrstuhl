@@ -66,17 +66,11 @@ void publishLiftState()
   boolean lightState = lightOn();
   if (lightState != prevLightState)
   {
+    publishMqtt(String(config_elevator_side) + "/presence", lightState ? "1" : "0");
+
     if (lightState)
-    {
-      Serial.println("Light on");
-      publishMqtt(String(config_elevator_side) + "/presence", "1");
       publishMqtt("calling", "0");
-    }
-    else
-    {
-      Serial.println("Light off");
-      publishMqtt(String(config_elevator_side) + "/presence", "0");
-    }
+
     prevLightState = lightState;
   }
 }

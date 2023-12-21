@@ -10,6 +10,7 @@ extern Preferences preferences;
 #define DEFAULT_MQTT_USER ""
 #define DEFAULT_MQTT_PASSWORD ""
 #define DEFAULT_MQTT_TOPIC "zuerich/elevator/"
+#define DEFAULT_ELEVATOR_SIDE "left"
 
 // Preferences
 extern char config_mqtt_server[40];
@@ -17,6 +18,7 @@ extern char config_mqtt_port[6];
 extern char config_mqtt_user[40];
 extern char config_mqtt_password[40];
 extern char config_mqtt_topic[40];
+extern char config_elevator_side[10];
 
 void setupPrefs();
 

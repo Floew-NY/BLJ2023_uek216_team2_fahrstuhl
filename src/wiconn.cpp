@@ -12,6 +12,7 @@ WiFiManagerParameter paramMqttPort("mqtt_port", "MQTT port", DEFAULT_MQTT_PORT, 
 WiFiManagerParameter paramMqttUser("mqtt_user", "MQTT user", DEFAULT_MQTT_USER, 40);
 WiFiManagerParameter paramMqttPassword("mqtt_password", "MQTT password", DEFAULT_MQTT_PASSWORD, 40);
 WiFiManagerParameter paramMqttTopic("mqtt_topic", "MQTT topic", DEFAULT_MQTT_TOPIC, 40);
+WiFiManagerParameter paramElevatorSide("elevator_side", "Elevator side", DEFAULT_ELEVATOR_SIDE, 10);
 
 int prevConfigButtonState = HIGH;
 

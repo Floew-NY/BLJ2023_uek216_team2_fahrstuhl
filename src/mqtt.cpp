@@ -63,7 +63,7 @@ void onMqttMessage(char *topic, char *payload, AsyncMqttClientMessageProperties 
   for (size_t i = 0; i < mqttSubscriptions.size(); i++)
   {
     MQTTSubscription subscription = mqttSubscriptions[i];
-    if (getFullTopic(subscription.topic) == topicString)
+    if ((subscription.exact && getFullTopic(subscription.topic) == topicString) || (!subscription.exact && topicString.startsWith(getFullTopic(subscription.topic))))
     {
       subscription.callback(topic, payload, properties, len, index, total);
     }

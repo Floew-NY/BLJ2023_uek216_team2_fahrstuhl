@@ -4,3 +4,7 @@
 
 // Pin definitions
 #define CONFIG_BUTTON_PIN 0
+#define CALL_BUTTON_PIN 15
+#define LIGHT_RED_PIN 16
+#define LIGHT_GREEN_PIN 17
+#define LIGHT_BLUE_PIN 18

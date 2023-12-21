@@ -12,6 +12,7 @@ extern WiFiManagerParameter paramMqttPort;
 extern WiFiManagerParameter paramMqttUser;
 extern WiFiManagerParameter paramMqttPassword;
 extern WiFiManagerParameter paramMqttTopic;
+extern WiFiManagerParameter paramElevatorSide;
 
 extern int prevConfigButtonState;
 

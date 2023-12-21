@@ -3,6 +3,7 @@
 #include "config.h"
 #include "mqtt.h"
 #include "Servo.h"
+#include "prefs.h"
 
 boolean prevLightState = false;
 boolean liftCalled = false;
@@ -39,7 +40,7 @@ void callback(char *topic, char *payload, AsyncMqttClientMessageProperties prope
     pressButton();
     if (!lightOn())
     {
-      publishMqtt("integration/lift", 2, true, "called");
+      publishMqtt("calling", "1");
     }
   }
 }
@@ -65,16 +66,11 @@ void publishLiftState()
   boolean lightState = lightOn();
   if (lightState != prevLightState)
   {
+    publishMqtt(String(config_elevator_side) + "/presence", lightState ? "1" : "0");
+
     if (lightState)
-    {
-      Serial.println("Light on");
-      publishMqtt("integration/lift", "here");
-    }
-    else
-    {
-      Serial.println("Light off");
-      publishMqtt("integration/lift", "gone");
-    }
+      publishMqtt("calling", "0");
+
     prevLightState = lightState;
   }
 }

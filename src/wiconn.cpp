@@ -28,6 +28,7 @@ void setupWifi()
   wifiManager.addParameter(&paramMqttUser);
   wifiManager.addParameter(&paramMqttPassword);
   wifiManager.addParameter(&paramMqttTopic);
+  wifiManager.addParameter(&paramElevatorSide);
 
   wifiManager.setSaveParamsCallback(onSaveParams);
   wifiManager.setConfigResetCallback(onConfigReset);

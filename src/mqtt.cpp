@@ -19,6 +19,11 @@ void connectMqtt()
   mqttClient.connect();
 }
 
+void disconnectMqtt()
+{
+  mqttClient.disconnect();
+}
+
 void onMqttConnect(bool sessionPresent)
 {
   Serial.println("Connected to MQTT.");

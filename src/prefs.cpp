@@ -42,7 +42,7 @@ void savePrefs()
   loadPrefs();
 }
 
-void prefsReset()
+void resetPrefs()
 {
   preferences.clear();
 

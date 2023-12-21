@@ -8,6 +8,8 @@ void setupMqtt();
 
 void connectMqtt();
 
+void disconnectMqtt();
+
 void onMqttConnect(bool sessionPresent);
 
 void onMqttDisconnect(AsyncMqttClientDisconnectReason reason);

@@ -23,4 +23,6 @@ void checkConfigButton();
 
 void onSaveParams();
 
+void onConfigReset();
+
 void onWifiEvent(WiFiEvent_t event);

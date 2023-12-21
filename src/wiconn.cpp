@@ -28,7 +28,9 @@ void setupWifi()
   wifiManager.addParameter(&paramMqttUser);
   wifiManager.addParameter(&paramMqttPassword);
   wifiManager.addParameter(&paramMqttTopic);
+
   wifiManager.setSaveParamsCallback(onSaveParams);
+  wifiManager.setConfigResetCallback(onConfigReset);
 
   wifiManager.setConfigPortalTimeout(60 * 5); // 5 minutes
   wifiManager.setConfigPortalBlocking(false);
@@ -59,6 +61,14 @@ void onSaveParams()
   savePrefs();
 
   connectMqtt();
+}
+
+void onConfigReset()
+{
+  Serial.println("Resetting preferences.");
+  resetPrefs();
+
+  disconnectMqtt();
 }
 
 void onWifiEvent(WiFiEvent_t event)

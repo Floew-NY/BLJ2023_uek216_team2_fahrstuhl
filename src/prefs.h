@@ -24,4 +24,4 @@ void loadPrefs();
 
 void savePrefs();
 
-void prefsReset();
+void resetPrefs();

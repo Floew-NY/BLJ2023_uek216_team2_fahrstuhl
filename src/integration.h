@@ -5,5 +5,3 @@
 void integrationSetup();
 
 void integrationLoop();
-
-#pragma endregion

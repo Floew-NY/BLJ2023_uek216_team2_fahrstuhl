@@ -5,5 +5,3 @@
 void interfaceSetup();
 
 void interfaceLoop();
-
-#pragma endregion

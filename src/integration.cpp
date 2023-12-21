@@ -16,8 +16,6 @@ void integrationSetup()
   pinMode(LIGHT_SENSOR_PIN, INPUT);
 
   subscribeMqtt("interface/call", callback);
-
-  pressButton();
 }
 
 void integrationLoop()

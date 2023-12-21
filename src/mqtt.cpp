@@ -38,6 +38,11 @@ void subscribeMqtt(String topic, AsyncMqttClientInternals::OnMessageUserCallback
   }
 }
 
+void publishMqtt(String topic, String payload, bool retain, uint8_t qos)
+{
+  mqttClient.publish(getFullTopic(topic).c_str(), qos, retain, payload.c_str());
+}
+
 void connectMqtt()
 {
   mqttClient.disconnect();

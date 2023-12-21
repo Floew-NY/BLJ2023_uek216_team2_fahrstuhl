@@ -22,6 +22,8 @@ void setupMqtt();
 
 void subscribeMqtt(String topic, AsyncMqttClientInternals::OnMessageUserCallback callback, bool exact = false, uint8_t qos = 0);
 
+void publishMqtt(String topic, String payload = "", bool retain = false, uint8_t qos = 0);
+
 void connectMqtt();
 
 void disconnectMqtt();

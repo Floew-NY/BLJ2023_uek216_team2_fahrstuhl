@@ -3,7 +3,7 @@
 #define INTEGRATION
 // #define INTERFACE
 
-// only aplies if confugring the integration module
+// only aplies if confugring the integration module, automatically always calls the elevator when its not there.
 #define INTEGRATION_AUTOMATIC_MODE false
 
 // Leave the following lines unchanged

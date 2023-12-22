@@ -1,0 +1,448 @@
+[
+    {
+        "id": "9af67535d2d87233",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "487fd12140eb145d",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "noseryoung.ddns.net",
+        "port": "1983",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "9bca30936cc37902",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "f94aaa54b6d32166",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD.MM.YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "a6fad3e5011cd405",
+        "type": "ui_group",
+        "name": "Standard",
+        "tab": "9bca30936cc37902",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "8bba97c90efd009a",
+        "type": "shared-state",
+        "name": "presenceLeft",
+        "lbl": "",
+        "tags": "",
+        "historyCount": "2",
+        "dataType": "str",
+        "boolType": "bool",
+        "boolStrTrue": "",
+        "boolStrFalse": "",
+        "precision": "",
+        "numMin": "",
+        "numMax": "",
+        "unit": "",
+        "saveInterval": "0"
+    },
+    {
+        "id": "77da20aa51a3b88f",
+        "type": "shared-state",
+        "name": "presenceRight",
+        "lbl": "",
+        "tags": "",
+        "historyCount": "2",
+        "dataType": "str",
+        "boolType": "bool",
+        "boolStrTrue": "",
+        "boolStrFalse": "",
+        "precision": "",
+        "numMin": "",
+        "numMax": "",
+        "unit": "",
+        "saveInterval": "0"
+    },
+    {
+        "id": "3cd38d76404ec316",
+        "type": "shared-state",
+        "name": "calling",
+        "lbl": "",
+        "tags": "",
+        "historyCount": "2",
+        "dataType": "str",
+        "boolType": "bool",
+        "boolStrTrue": "",
+        "boolStrFalse": "",
+        "precision": "",
+        "numMin": "",
+        "numMax": "",
+        "unit": "",
+        "saveInterval": "0"
+    },
+    {
+        "id": "796c1118f3dfa22a",
+        "type": "mqtt in",
+        "z": "9af67535d2d87233",
+        "name": "",
+        "topic": "zuerich/elevator/left/presence",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "487fd12140eb145d",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 160,
+        "y": 120,
+        "wires": [
+            [
+                "45849c1f62bad9bf"
+            ]
+        ]
+    },
+    {
+        "id": "eeddb866e4c2d573",
+        "type": "ui_button",
+        "z": "9af67535d2d87233",
+        "name": "",
+        "group": "a6fad3e5011cd405",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Call Elevator",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "1",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 330,
+        "y": 560,
+        "wires": [
+            [
+                "32baa57d38362cbd"
+            ]
+        ]
+    },
+    {
+        "id": "e9f0800b9cce5a5e",
+        "type": "ui_text",
+        "z": "9af67535d2d87233",
+        "group": "a6fad3e5011cd405",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Lift Status:",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 810,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "631f60378e8a84f2",
+        "type": "set-shared-state",
+        "z": "9af67535d2d87233",
+        "state": "3cd38d76404ec316",
+        "name": "calling",
+        "triggerOnInit": true,
+        "triggerOnChange": true,
+        "provideOutput": false,
+        "outputs": 0,
+        "x": 370,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "ad78dfeb2e815f0a",
+        "type": "mqtt in",
+        "z": "9af67535d2d87233",
+        "name": "",
+        "topic": "zuerich/elevator/right/presence",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "487fd12140eb145d",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 170,
+        "y": 200,
+        "wires": [
+            [
+                "0951af60a33046d4"
+            ]
+        ]
+    },
+    {
+        "id": "e4064665a604efd6",
+        "type": "mqtt in",
+        "z": "9af67535d2d87233",
+        "name": "",
+        "topic": "zuerich/elevator/calling",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "487fd12140eb145d",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 140,
+        "y": 260,
+        "wires": [
+            [
+                "631f60378e8a84f2"
+            ]
+        ]
+    },
+    {
+        "id": "0951af60a33046d4",
+        "type": "set-shared-state",
+        "z": "9af67535d2d87233",
+        "state": "77da20aa51a3b88f",
+        "name": "presenceRight",
+        "triggerOnInit": true,
+        "triggerOnChange": true,
+        "provideOutput": false,
+        "outputs": 0,
+        "x": 400,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "45849c1f62bad9bf",
+        "type": "set-shared-state",
+        "z": "9af67535d2d87233",
+        "state": "8bba97c90efd009a",
+        "name": "presenceLeft",
+        "triggerOnInit": true,
+        "triggerOnChange": true,
+        "provideOutput": false,
+        "outputs": 0,
+        "x": 390,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "c3e03c0d0cccdef6",
+        "type": "function",
+        "z": "9af67535d2d87233",
+        "name": "Display States",
+        "func": "let presenceLeft = global.get(\"state\").presenceLeft.value == \"1\";\nlet presenceRight = global.get(\"state\").presenceRight.value == \"1\";\nlet calling = global.get(\"state\").calling.value == \"1\";\n\nif (calling) { \nmsg.payload = \"Elevator is behing Called\"\n}else{\nif(presenceLeft || presenceRight)\n{\n    msg.payload = \"Elevator is here!\";\n}else{\n    msg.payload = \"Elevator is gone..\";\n    }\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 640,
+        "y": 380,
+        "wires": [
+            [
+                "e9f0800b9cce5a5e"
+            ]
+        ]
+    },
+    {
+        "id": "0f4bdbcddda290dc",
+        "type": "get-shared-state",
+        "z": "9af67535d2d87233",
+        "state": "77da20aa51a3b88f",
+        "name": "presenceRight",
+        "triggerOnInit": true,
+        "triggerOnChange": true,
+        "x": 330,
+        "y": 400,
+        "wires": [
+            [
+                "c3e03c0d0cccdef6"
+            ]
+        ]
+    },
+    {
+        "id": "b06ab5437ba4b5a7",
+        "type": "get-shared-state",
+        "z": "9af67535d2d87233",
+        "state": "8bba97c90efd009a",
+        "name": "presenceLeft",
+        "triggerOnInit": true,
+        "triggerOnChange": true,
+        "x": 330,
+        "y": 340,
+        "wires": [
+            [
+                "c3e03c0d0cccdef6"
+            ]
+        ]
+    },
+    {
+        "id": "b3c9bfde0f4ae04c",
+        "type": "get-shared-state",
+        "z": "9af67535d2d87233",
+        "state": "3cd38d76404ec316",
+        "name": "calling",
+        "triggerOnInit": true,
+        "triggerOnChange": true,
+        "x": 310,
+        "y": 480,
+        "wires": [
+            [
+                "c3e03c0d0cccdef6"
+            ]
+        ]
+    },
+    {
+        "id": "32baa57d38362cbd",
+        "type": "mqtt out",
+        "z": "9af67535d2d87233",
+        "name": "",
+        "topic": "zuerich/elevator/call",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "487fd12140eb145d",
+        "x": 620,
+        "y": 560,
+        "wires": []
+    }
+]

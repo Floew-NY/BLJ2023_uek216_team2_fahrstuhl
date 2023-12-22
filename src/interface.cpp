@@ -12,18 +12,45 @@ Adafruit_SSD1306 display(128, 32, &Wire, -1);
 
 int prevCallButtonState = LOW;
 
-void displayDoorOpen()
+bool leftPresence = false;
+bool prevLeftPresence = false;
+
+bool rightPresence = false;
+bool prevRightPresence = false;
+
+bool calling = false;
+bool prevCalling = false;
+
+void renderDoor(bool isOpen, int xOffset)
 {
-  display.fillRect(4, 5, 21, 28, WHITE);
-  display.fillRect(7, 7, 15, 26, BLACK);
+  if (isOpen)
+  {
+    display.fillRect(4 + xOffset, 5, 21, 28, WHITE);
+    display.fillRect(7 + xOffset, 7, 15, 26, BLACK);
+  }
+  else
+  {
+    display.fillRect(4 + xOffset, 5, 21, 28, WHITE);
+    display.fillRect(6 + xOffset, 6, 17, 27, BLACK);
+    display.fillRect(7 + xOffset, 7, 7, 26, WHITE);
+    display.fillRect(15 + xOffset, 7, 7, 26, WHITE);
+  }
 }
 
-void displayDoorClosed()
+void handleLeftPresence(char *topic, char *payload, AsyncMqttClientMessageProperties properties, size_t len, size_t index, size_t total)
 {
-  display.fillRect(4, 5, 21, 28, WHITE);
-  display.fillRect(6, 6, 17, 27, BLACK);
-  display.fillRect(7, 7, 7, 26, WHITE);
-  display.fillRect(15, 7, 7, 26, WHITE);
+  leftPresence = String(payload).charAt(0) == '1';
+}
+
+void handleRightPresence(char *topic, char *payload, AsyncMqttClientMessageProperties properties, size_t len, size_t index, size_t total)
+{
+  Serial.println(payload);
+  rightPresence = String(payload).charAt(0) == '1';
+}
+
+void handleCalling(char *topic, char *payload, AsyncMqttClientMessageProperties properties, size_t len, size_t index, size_t total)
+{
+  calling = String(payload).charAt(0) == '1';
 }
 
 void interfaceSetup()
@@ -40,26 +67,59 @@ void interfaceSetup()
   display.clearDisplay();
   display.setTextSize(2);
   display.setTextColor(WHITE);
+  display.display();
+
+  subscribeMqtt("left/presence", handleLeftPresence, false, 2);
+  subscribeMqtt("right/presence", handleRightPresence, false, 2);
+  subscribeMqtt("calling", handleCalling, false, 2);
 }
 
 void interfaceLoop()
 {
-  digitalWrite(LIGHT_RED_PIN, HIGH);
-  display.clearDisplay();
-  display.setCursor(0, 0);
   int callButtonState = digitalRead(CALL_BUTTON_PIN);
-  displayDoorClosed();
-  display.display();
-  if (callButtonState == HIGH)
+
+  if (prevLeftPresence != leftPresence || prevRightPresence != rightPresence || prevCalling != calling)
   {
-    if (prevCallButtonState == LOW)
+    display.clearDisplay();
+
+    prevLeftPresence = leftPresence;
+    prevRightPresence = rightPresence;
+    prevCalling = calling;
+
+    String text;
+
+    if (calling)
     {
-      publishMqtt("interface/call");
+      text = "Coming";
       digitalWrite(LIGHT_RED_PIN, HIGH);
       digitalWrite(LIGHT_GREEN_PIN, HIGH);
-      displayDoorOpen();
-      display.display();
     }
+    else if (leftPresence || rightPresence)
+    {
+      text = "Here";
+
+      digitalWrite(LIGHT_RED_PIN, LOW);
+      digitalWrite(LIGHT_GREEN_PIN, HIGH);
+    }
+    else
+    {
+      text = "Gone";
+
+      digitalWrite(LIGHT_RED_PIN, HIGH);
+      digitalWrite(LIGHT_GREEN_PIN, LOW);
+    }
+    display.setCursor(32, 15);
+    display.print(text);
+
+    renderDoor(leftPresence, 0);
+    renderDoor(rightPresence, 101);
+
+    display.display();
+  }
+
+  if (callButtonState == HIGH && prevCallButtonState == LOW)
+  {
+    publishMqtt("call");
   }
   prevCallButtonState = callButtonState;
 }

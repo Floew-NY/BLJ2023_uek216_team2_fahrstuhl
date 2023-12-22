@@ -15,7 +15,7 @@ void integrationSetup()
   servo.attach(SERVO_PIN);
   pinMode(LIGHT_SENSOR_PIN, INPUT);
 
-  subscribeMqtt("interface/call", callback);
+  subscribeMqtt("call", callback);
 }
 
 void integrationLoop()
@@ -32,14 +32,10 @@ void integrationLoop()
 
 void callback(char *topic, char *payload, AsyncMqttClientMessageProperties properties, size_t len, size_t index, size_t total)
 {
-  Serial.println("Received message: " + String(topic) + " - " + String(payload));
-  if (strcmp(topic, "zuerich/elevator/interface/call") == 0)
+  pressButton();
+  if (!lightOn())
   {
-    pressButton();
-    if (!lightOn())
-    {
-      publishMqtt("calling", "1");
-    }
+    publishMqtt("calling", "1");
   }
 }
 
